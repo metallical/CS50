@@ -1,0 +1,32 @@
+#include <cs50.h>
+#include <stdio.h>
+#include <math.h>
+int main(void)
+{
+    float change;
+    do{
+        change= get_float("Change: ");
+    }while(change<0);
+    int cents= round((change*100)%100);
+    int dollars= round(change-(cents/100));
+    int count=dollars/4;//to add the number of 25 cent coins    
+    while(cents>=25)//for 25 cent coins
+    {
+        cents=cents-25;
+        count++;
+    }
+    while(cents>=10)//for 10 cent coins
+    {
+        cents=cents-10;
+        count++;
+    }
+    while(cents>=5)//for 5 cent coins
+    {
+        cents=cents-5;
+        count++;
+    }
+    count=count+cents;//for one cent coins
+    printf("\n");
+    printf("%i\n",count);
+    
+}
